@@ -3,17 +3,25 @@ import { search } from './opensea.js';
 
 const configs = {
     lambduh_omega: {
-       url: 'https://opensea.io/collection/lambduhs?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Tier&search[stringTraits][0][values][0]=Omega&search[toggles][0]=BUY_NOW',
+        url: 'https://opensea.io/collection/lambduhs?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Tier&search[stringTraits][0][values][0]=Omega&search[toggles][0]=BUY_NOW',
         threshold: 0.2
     },
     lambduh_alpha: {
-       url: 'https://opensea.io/collection/lambduhs?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Tier&search[stringTraits][0][values][0]=Omega&search[stringTraits][0][values][1]=Alpha&search[toggles][0]=BUY_NOW',
+        url: 'https://opensea.io/collection/lambduhs?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Tier&search[stringTraits][0][values][0]=Omega&search[stringTraits][0][values][1]=Alpha&search[toggles][0]=BUY_NOW',
         threshold: 0.05
     },
     lambduh_beta: {
-       url: 'https://opensea.io/collection/lambduhs?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Tier&search[stringTraits][0][values][0]=Omega&search[stringTraits][0][values][1]=Alpha&search[stringTraits][0][values][2]=Beta&search[toggles][0]=BUY_NOW',
-       threshold: 0.01
-   }
+        url: 'https://opensea.io/collection/lambduhs?search[sortAscending]=true&search[sortBy]=PRICE&search[stringTraits][0][name]=Tier&search[stringTraits][0][values][0]=Omega&search[stringTraits][0][values][1]=Alpha&search[stringTraits][0][values][2]=Beta&search[toggles][0]=BUY_NOW',
+        threshold: 0.02
+    },
+    dailydust: {
+        url: 'https://opensea.io/collection/dailydust-collection?collectionSlug=dailydust-collection&search[sortAscending]=true&search[sortBy]=PRICE&search[toggles][0]=BUY_NOW',
+        threshold: 0.1
+    },
+    axolittles: {
+        url: 'https://opensea.io/collection/axolittles?collectionSlug=axolittles&search[sortBy]=PRICE&search[sortAscending]=true&search[toggles][0]=BUY_NOW',
+        threshold: 0.1
+    }
 }
 
 for (const key in configs) {
