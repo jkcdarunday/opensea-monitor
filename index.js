@@ -29,7 +29,7 @@ for (const key in configs) {
     const config = configs[key];
     const searchResults = await search(config.url);
 
-    console.log('Top results:', searchResults);
+    console.log('Top results:', searchResults.splice(0, 3));
 
     const [asset] = searchResults;
     const { url, price } = asset;
