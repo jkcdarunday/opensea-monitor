@@ -5,13 +5,15 @@ import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
 puppeteer.use(StealthPlugin());
 
-export async function search(url) {
-    const browser = await puppeteer.launch({
+export async function getBrowser() {
+    return puppeteer.launch({
         headless: true,
         executablePath: '/usr/bin/chromium',
         args: [],
     });
+}
 
+export async function search(url, browser = getBrowser()) {
     const page = await browser.newPage();
     await page.setViewport({ width: 1366, height: 768 });
 
@@ -26,7 +28,7 @@ export async function search(url) {
     await page.goto(url);
 
     const wiredRecords = JSON.parse(await page.evaluate(() => JSON.stringify(window.__wired__))).records;
-    await browser.close();
+    await page.close();
 
     const searchResult = _(wiredRecords).values()
         .find(wiredRecord => _.startsWith(wiredRecord.__id, 'client:root:query:search')
