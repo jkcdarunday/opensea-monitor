@@ -2,7 +2,6 @@ import puppeteer from 'puppeteer-extra';
 import _ from 'lodash';
 
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-import sleep from 'sleep';
 
 puppeteer.use(StealthPlugin());
 
@@ -15,6 +14,13 @@ export async function search(url) {
 
     const page = await browser.newPage();
     await page.setViewport({ width: 1366, height: 768 });
+
+    await page.setRequestInterception(true);
+    page.on('request', async req => (
+        _.includes(['stylesheet', 'font', 'image'], req.resourceType())
+            ? req.abort()
+            : req.continue()
+    ));
 
     console.log('Loading page...');
     await page.goto(url);
